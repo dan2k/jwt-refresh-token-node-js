@@ -4,7 +4,8 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-  origin: "http://localhost:8081"
+  //origin: "http://localhost:8081"
+  origin:"*"
 };
 
 app.use(cors(corsOptions));
@@ -19,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 const db = require("./app/models");
 const Role = db.role;
 
-db.sequelize.sync();
+db.sequelize.sync();//.then(()=>{initial()});
 // force: true will drop the table if it already exists
 // db.sequelize.sync({force: true}).then(() => {
 //   console.log('Drop and Resync Database with { force: true }');
